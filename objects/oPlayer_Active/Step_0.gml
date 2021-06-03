@@ -116,12 +116,8 @@ if(x < 0 || x > room_width) {
 	var borderPortalId = collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, oHBorderPortal, false, true);
 	if(borderPortalId != noone) {
 		if(borderPortalId.isInPortal(id) && borderPortalId.isVaild()) {
-			borderPortalInfo = new BorderPortalInfo(
-				borderPortalId.toRoomId, borderPortalId.toPortalId, 
-				x - borderPortalId.x, y - borderPortalId.y
-				);
-			instance_change(oPlayer_InPortal, false);
-			room_goto(borderPortalId.toRoomId);
+			borderPortalInfo = new BorderPortalInfo(x, y, borderPortalId);
+			instance_change(oPlayer_InPortal, true);
 			exit;
 		}
 	}

@@ -14,11 +14,13 @@ jumpTimes = 0;
 jumpSpd = -6;
 jumpedOut = false;
 
-function BorderPortalInfo(_toRoomId, _toPortalId, _xOffset, _yOffset) constructor {
-	toRoomId = _toRoomId;
-	toPortalId = _toPortalId;
-	xOffset = _xOffset;
-	yOffset = _yOffset;
+function BorderPortalInfo(_x, _y, _borderPortalId) constructor {
+	toRoomId = _borderPortalId.toRoomId;
+	toPortalId = _borderPortalId.toPortalId;
+	xOffset = _x - _borderPortalId.x;
+	yOffset = _y - _borderPortalId.y;
+	surfXOffset = scrViewX(0) - _borderPortalId.x;
+	surfYOffset = scrViewY(0) - _borderPortalId.y;
 }
 
 function findNearestSavePoint() {
