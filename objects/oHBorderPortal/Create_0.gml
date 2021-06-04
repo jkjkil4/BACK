@@ -1,10 +1,5 @@
-portalId = -1;
-toRoomId = -1;
-toPortalId = -1;
+event_inherited();
 
 function isInPortal(_id) {
-	return bbox_top <= _id.bbox_top && _id.bbox_bottom <= bbox_bottom;
-}
-function isVaild() {
-	return toRoomId != -1 && toPortalId != -1;
+	return bbox_top - 1 <= _id.bbox_top && _id.bbox_bottom <= bbox_bottom + 1;
 }

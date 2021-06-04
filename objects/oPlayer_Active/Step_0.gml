@@ -108,19 +108,39 @@ if(yspd > 0) {	//若有向下的速度
 }
 
 if(keyboard_check_pressed(vk_backspace)) {
-	instance_change(oPlayer_Dead, true);
+	kill();
 	exit;
 }
 
+//横向切换场景
 if(x < 0 || x > room_width) {
 	var borderPortalId = collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, oHBorderPortal, false, true);
 	if(borderPortalId != noone) {
 		if(borderPortalId.isInPortal(id) && borderPortalId.isVaild()) {
-			borderPortalInfo = new BorderPortalInfo(x, y, borderPortalId);
+			borderPortalInfo = new BorderPortalInfo(id, borderPortalId);
+			borderPortalInfo.subimg = image_index;
 			instance_change(oPlayer_InPortal, true);
 			exit;
 		}
 	}
 	xspd = 0;
 	x = (x < 0 ? 0 : room_width);
+}
+
+//纵向切换场景
+var vcenter = (bbox_top + bbox_bottom) / 2;
+if((vcenter < 0 && yspd <= 0) || (vcenter > room_height && yspd >= 0)) {
+	var borderPortalId = collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, oVBorderPortal, false, true);
+	if(borderPortalId != noone) {
+		if(borderPortalId.isInPortal(id) && borderPortalId.isVaild()) {
+			borderPortalInfo = new BorderPortalInfo(id, borderPortalId);
+			borderPortalInfo.subimg = image_index;
+			instance_change(oPlayer_InPortal, true);
+			exit;
+		}
+	}
+	if(vcenter > room_height) {
+		kill();
+		exit;
+	}
 }

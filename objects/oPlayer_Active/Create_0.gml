@@ -14,11 +14,13 @@ jumpTimes = 0;
 jumpSpd = -6;
 jumpedOut = false;
 
-function BorderPortalInfo(_x, _y, _borderPortalId) constructor {
+function BorderPortalInfo(_id, _borderPortalId) constructor {
 	toRoomId = _borderPortalId.toRoomId;
 	toPortalId = _borderPortalId.toPortalId;
-	xOffset = _x - _borderPortalId.x;
-	yOffset = _y - _borderPortalId.y;
+	xOffset = _id.x - _borderPortalId.x;
+	yOffset = _id.y - _borderPortalId.y;
+	xprevOffset = _id.xprevious - _borderPortalId.x;
+	yprevOffset = _id.yprevious - _borderPortalId.y;
 	surfXOffset = scrViewX(0) - _borderPortalId.x;
 	surfYOffset = scrViewY(0) - _borderPortalId.y;
 }
@@ -28,6 +30,8 @@ function findNearestSavePoint() {
 	savePointX = (nearestSavePoint == noone ? x : nearestSavePoint.x);
 	savePointY = (nearestSavePoint == noone ? y : nearestSavePoint.y);
 }
+
+function kill() { instance_change(oPlayer_Dead, true); }
 
 function preMoveUp() {
 	for(var upOffset = -1; upOffset >= -AUTO_UP_HEIGHT; upOffset--) {

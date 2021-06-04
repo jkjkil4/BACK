@@ -15,6 +15,7 @@ for(var i = 0; i < count; i++) {
 	}
 }
 if(borderPortalInfo.targetPortal == noone) {
+	findNearestSavePoint();
 	instance_change(oPlayer_Active, false);
 	delete borderPortalInfo;
 	surface_free(surf);

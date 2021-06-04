@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sHBorderProtal",
-    "path": "sprites/sHBorderProtal/sHBorderProtal.yy",
+    "name": "sVBorderProtal",
+    "path": "sprites/sVBorderProtal/sVBorderProtal.yy",
   },
   "solid": false,
   "visible": true,
@@ -33,7 +33,7 @@
     "path": "folders/Game/Portal.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oHBorderPortal",
+  "name": "oVBorderPortal",
   "tags": [],
   "resourceType": "GMObject",
 }
