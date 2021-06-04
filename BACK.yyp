@@ -1,6 +1,7 @@
 {
   "resources": [
     {"id":{"name":"sSolid","path":"sprites/sSolid/sSolid.yy",},"order":1,},
+    {"id":{"name":"oMenu","path":"objects/oMenu/oMenu.yy",},"order":0,},
     {"id":{"name":"oVBorderPortal","path":"objects/oVBorderPortal/oVBorderPortal.yy",},"order":3,},
     {"id":{"name":"oInit","path":"objects/oInit/oInit.yy",},"order":7,},
     {"id":{"name":"tileBlocks","path":"tilesets/tileBlocks/tileBlocks.yy",},"order":0,},
@@ -54,6 +55,7 @@
     {"folderPath":"folders/Game/Portal.yy","order":8,"resourceVersion":"1.0","name":"Portal","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Scripts.yy","order":2,"resourceVersion":"1.0","name":"Scripts","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Tiles.yy","order":3,"resourceVersion":"1.0","name":"Tiles","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Game/Menu.yy","order":9,"resourceVersion":"1.0","name":"Menu","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
