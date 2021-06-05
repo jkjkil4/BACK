@@ -1,4 +1,5 @@
 //按键相关
+global.keyEnter = ord("C");
 global.keyLeft = vk_left;
 global.keyRight = vk_right;
 global.keyJump = ord("Z");
