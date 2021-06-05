@@ -19,15 +19,16 @@
   "physicsShapePoints": [],
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":1,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Menu",
-    "path": "folders/Game/Menu.yy",
+    "name": "Widgets",
+    "path": "folders/Game/Widgets.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oMenu",
+  "name": "oWidget",
   "tags": [],
   "resourceType": "GMObject",
 }

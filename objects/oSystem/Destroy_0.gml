@@ -1,1 +1,1 @@
-ds_list_destroy(menuList);
+ds_list_destroy(widgetList);

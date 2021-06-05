@@ -1,0 +1,1 @@
+ds_list_delete(global.sys.widgetList, ds_list_find_index(global.sys.widgetList, id));

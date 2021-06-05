@@ -1,3 +1,3 @@
 global.sys = id;
 
-menuList = ds_list_create();
+widgetList = ds_list_create();

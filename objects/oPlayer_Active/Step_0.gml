@@ -1,5 +1,6 @@
-var keyRight = keyboard_check(vk_right);
-var keyLeft = keyboard_check(vk_left);
+//左右键的判断
+var keyRight = keyboard_check(global.keyRight);
+var keyLeft = keyboard_check(global.keyLeft);
 var keyRightLeft = keyRight - keyLeft;
 
 if(xspd == 0) {
@@ -70,7 +71,7 @@ if(collision_line(bbox_left + 1, bbox_bottom + 2, bbox_right - 1, bbox_bottom + 
 	alarm[0] = 6;
 	jumpedOut = true;
 }
-if(keyboard_check_pressed(ord("Z"))) {
+if(keyboard_check_pressed(global.keyJump)) {
 	if(jumpTimes < jumpTimesMax) {
 		yspd = jumpSpd;
 		jumpTimes++;
@@ -105,11 +106,6 @@ if(yspd > 0) {	//若有向下的速度
 		}
 		yspd = 0;
 	} else y += yspd;
-}
-
-if(keyboard_check_pressed(vk_backspace)) {
-	kill();
-	exit;
 }
 
 //横向切换场景
