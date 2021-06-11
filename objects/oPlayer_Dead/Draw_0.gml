@@ -9,6 +9,8 @@ for(var i = 0; i < 3; i++) {
 	dir = 360 * i / 3 + process * 500;
 	draw_circle(x + dcos(dir) * dis, vcenter + dsin(dir) * dis, 4, false);
 }
-draw_set_alpha(process);
-draw_surface(surf, scrViewX(0), scrViewY(0));
-draw_set_alpha(1);
+if(surface_exists(surf)) {
+	draw_set_alpha(process);
+	draw_surface(surf, scrViewX(0), scrViewY(0));
+	draw_set_alpha(1);
+}

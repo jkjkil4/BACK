@@ -1,0 +1,1 @@
+instance_change(oPlayer_Active, false);

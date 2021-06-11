@@ -22,8 +22,14 @@ if(size != 0 && global.sys.focusedWidget() == id) {
 	}
 	
 	//按下确认键时触发
-	if(keyboard_check_pressed(global.keyEnter))
-		tabList[| curIndex].fn();
+	if(keyboard_check_pressed(global.keyEnter)) {
+		var tab = tabList[| curIndex];
+		tab.fn(tab.args);
+	}
+	
+	//按下取消键时关闭
+	if(keyboard_check_pressed(global.keyCancel))
+		close();
 }
 
 
