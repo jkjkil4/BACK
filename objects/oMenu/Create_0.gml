@@ -5,6 +5,7 @@ valign = fa_middle;
 spacing = 8;
 scale = 1;
 lockY = y;
+closeable = true;
 
 font = -1;
 function useFont() {

@@ -2,8 +2,6 @@ function scrGetMenuChildX(_oid) { return _oid.x + _oid.maxWidth() * _oid.scale +
 function scrGetMenuChildY(_oid, _index) { return _oid.y + _oid.tabY(_index); }
 
 function scrCreateDebugMenu(_x, _y) {
-	if(global.debugMenu != noone)	//如果已经存在，则return
-		return;
 	//新建实例
 	var oid = instance_create_layer(_x, _y, "System", oMenu);
 	//设置相关属性
@@ -11,8 +9,8 @@ function scrCreateDebugMenu(_x, _y) {
 	oid.lockY = scrViewH(0) / 2;
 	oid.halign = fa_left;
 	oid.yOffset = scrViewH(0);
-	oid.closeEvent = function() { global.debugMenu = noone; }	//用于取消标记
-	function fnMove() {		//用于将玩家移动至鼠标位置
+	function fnMove() {	
+		//用于将玩家移动至鼠标位置
 		if(instance_exists(oPlayer_Active)) {
 			oPlayer_Active.x = mouse_x;
 			oPlayer_Active.y = mouse_y;
@@ -84,7 +82,6 @@ function scrCreateDebugMenu(_x, _y) {
 	oid.addTab(new oid.Tab("Save -", fnSave, oid));
 	oid.addTab(new oid.Tab("RoomSpd -", fnRoomSpd, oid));
 	oid.addTab(new oid.Tab("Visible -", fnVisible, oid));
-	global.debugMenu = oid;	//标记存在
 	return oid;
 }
 
@@ -96,6 +93,7 @@ function scrCreateTitleMenu(_x, _y) {
 	oid.lockY = scrViewH(0) / 2;
 	oid.halign = fa_left;
 	oid.valign = fa_top;
+	oid.closeable = false;
 	function fnStart(_oid) {
 		//新建实例
 		_oid.useFont();

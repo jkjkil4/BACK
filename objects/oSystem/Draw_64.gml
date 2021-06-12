@@ -4,7 +4,7 @@ if(DEBUG) {
 		var debugMsg = "";
 
 		//调试信息 - 基本
-		debugMsg += "FPS:" + string(fps) + "\n";
+		debugMsg += "FPS:" + string(fps) + " SI:" + string(global.saveIndex) + "\n";
 
 		//调试信息 - 玩家
 		if(instance_exists(oPlayer)) {

@@ -41,6 +41,7 @@ function findNearestSavePoint() {
 
 //判定死亡
 function kill() { instance_change(oPlayer_Dead, true); }
+function killLater() { alarm[1] = 1; }
 
 //自动上坡
 function preMoveUp() {

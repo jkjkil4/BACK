@@ -1,2 +1,2 @@
 if(!persistent)
-	instance_destroy();
+	close();
