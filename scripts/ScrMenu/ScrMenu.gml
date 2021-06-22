@@ -109,27 +109,27 @@ function scrCreateTitleMenu(_x, _y) {
 		oid.valign = fa_top;
 		oid.yOffset = 40;
 		//得到已有存档
-		var _index = (DEBUG && file_exists("saves/0") ? 0 : 1);
+		var index = (DEBUG && file_exists("saves/0") ? 0 : 1);
 		if(directory_exists("saves")) {
-			var _fileName = "saves/" + string(_index);
+			var fileName = "saves/" + string(index);
 			//var _map = ds_map_create();
-			while(file_exists(_fileName)) {
+			while(file_exists(fileName)) {
 				//dfr = new DotFileReader(_fileName);
 				//dfr.fileOpen();
 				//transToMap(dfr.readLine(), _map);
 				//dfr.fileClose();
 				//delete dfr;
-				oid.addTab(new oid.Tab(_index, load, _index));
-				_index++;
-				_fileName = "saves/" + string(_index);
+				oid.addTab(new oid.Tab(index, load, index));
+				index++;
+				fileName = "saves/" + string(index);
 			}
 			//ds_map_destroy(_map);
 		}
-		function fnNew(_index) {
-			global.saveIndex = _index;
-			room_goto(rGame);	
+		function fnNew(index) {
+			global.saveIndex = index;
+			room_goto(rGame);
 		}
-		oid.addTab(new oid.Tab("New", fnNew, _index));
+		oid.addTab(new oid.Tab("New", fnNew, index));
 	}
 	//添加tab
 	oid.addTab(new oid.Tab("Start", fnStart, oid));

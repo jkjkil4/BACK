@@ -18,23 +18,23 @@ function DotFileReader(_file) constructor {
 	file = _file;
 	static fileOpen = function() { handle = file_text_open_read(file); }
 	static readLine = function() {
-		var _line = file_text_readln(handle);
-		var _len = string_length(_line);
-		var _buf = "";
-		var _result = [];
-		var _count = 0;
-		for(var i = 0; i < _len; i++) {
-			var _ch = string_char_at(_line, i + 1);	// i
-			if(_ch == "\\" && i != _len - 1) {
-				_buf += string_char_at(_line, i + 2);	// i + 1
+		var line = file_text_readln(handle);
+		var len = string_length(line);
+		var buf = "";
+		var result = [];
+		var count = 0;
+		for(var i = 0; i < len; i++) {
+			var ch = string_char_at(line, i + 1);	// i
+			if(ch == "\\" && i != len - 1) {
+				buf += string_char_at(line, i + 2);	// i + 1
 				i++;
-			} else if(_ch == ",") {
-				_result[_count] = _buf;
-				_buf = "";
-				_count++;
-			} else _buf += _ch;
+			} else if(ch == ",") {
+				result[count] = buf;
+				buf = "";
+				count++;
+			} else buf += ch;
 		}
-		return _result;
+		return result;
 	}
 	static nextLine = function() { return file_text_readln(handle); }
 	static atEnd = function() { return file_text_eof(handle); }
@@ -43,8 +43,8 @@ function DotFileReader(_file) constructor {
 
 function transToMap(_dfArray, _dsMap) {
 	ds_map_clear(_dsMap);
-	var _len = array_length(_dfArray);
-	for(var i = 0; i < _len - 1; i += 2)
+	var len = array_length(_dfArray);
+	for(var i = 0; i < len - 1; i += 2)
 		_dsMap[? _dfArray[i]] = _dfArray[i + 1];
 }
 
@@ -63,30 +63,30 @@ function save(_index) {
 	}
 }
 function load(_index) {
-	var _fileName = "saves/" + string(_index);
-	if(file_exists(_fileName)) {
-		var _map = ds_map_create();
-		var dfr = new DotFileReader(_fileName);
+	var fileName = "saves/" + string(_index);
+	if(file_exists(fileName)) {
+		var map = ds_map_create();
+		var dfr = new DotFileReader(fileName);
 		dfr.fileOpen();
 		dfr.nextLine();
-		transToMap(dfr.readLine(), _map);
+		transToMap(dfr.readLine(), map);
 		dfr.fileClose();
 		delete dfr;
-		if(!ds_map_exists(_map, "spx") || !ds_map_exists(_map, "spy") || !ds_map_exists(_map, "rn")) {
+		if(!ds_map_exists(map, "spx") || !ds_map_exists(map, "spy") || !ds_map_exists(map, "rn")) {
 			show_message("Failed to load (variable does not exist)");	
 			return;
 		}
-		var rn = _map[? "rn"];
+		var rn = map[? "rn"];
 		if(!ds_map_exists(global.roomMap, rn)) {
 			show_message("Failed to load (room does not exist)");
 			return;
 		}
-		var spx = real(_map[? "spx"]), spy = real(_map[? "spy"]);
+		var spx = real(map[? "spx"]), spy = real(map[? "spy"]);
 		var player = instance_create_layer(spx, spy, "Entity", oPlayer_Tmp);
 		player.savePointX = spx;
 		player.savePointY = spy;
 		room_goto(global.roomMap[? rn]);
-		ds_map_destroy(_map);
+		ds_map_destroy(map);
 		global.saveIndex = _index;
 	}
 }
