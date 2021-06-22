@@ -52,7 +52,7 @@ function save(_index) {
 	if(instance_exists(oPlayer_Active)) {
 		if(!directory_exists("saves"))
 			directory_create("saves");
-		var dfw = new DotFileWriter("saves/" + string(global.saveIndex));
+		var dfw = new DotFileWriter("saves/" + string(global.save.index));
 		dfw.fileOpen();
 		dfw.nextLine();
 		dfw.write("rn", room_get_name(room));
@@ -87,6 +87,6 @@ function load(_index) {
 		player.savePointY = spy;
 		room_goto(global.roomMap[? rn]);
 		ds_map_destroy(map);
-		global.saveIndex = _index;
+		global.save.index = _index;
 	}
 }

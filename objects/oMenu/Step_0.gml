@@ -7,10 +7,8 @@ if(global.sys.focusedWidget() == id) {
 		var tmpCurIndex = curIndex;
 		
 		//根据按键改变tmpCurIndex
-		if(keyboard_check_pressed(vk_up))
-			tmpCurIndex--;
-		if(keyboard_check_pressed(vk_down))
-			tmpCurIndex++;
+		if(isUp()) tmpCurIndex--;
+		if(isDown()) tmpCurIndex++;
 	
 		//限制tmpCurIndex
 		if(tmpCurIndex < 0)
@@ -25,14 +23,14 @@ if(global.sys.focusedWidget() == id) {
 		}
 	
 		//按下确认键时触发
-		if(keyboard_check_pressed(global.keyEnter)) {
+		if(isEnter()) {
 			var tab = tabList[| curIndex];
 			tab.fn(tab.args);
 		}
 	}
 	
 	//按下取消键时关闭
-	if(closeable && keyboard_check_pressed(global.keyCancel))
+	if(closeable && isCancel())
 		close();
 }
 

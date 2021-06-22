@@ -38,7 +38,7 @@ function fnSave(_oid) {		//存档相关
 	//添加tab
 	oid.addTab(new oid.Tab("Reset savepoint to nearest", fnResetSavePoint));
 	oid.addTab(new oid.Tab("Set savepoint here", fnSetSavePointHere));
-	oid.addTab(new oid.Tab("Save to file", save, global.saveIndex));
+	oid.addTab(new oid.Tab("Save to file", save, global.save.index));
 }
 function fnRoomSpd(_oid) {	//调整room_speed的菜单
 	//新建实例

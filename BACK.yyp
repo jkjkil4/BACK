@@ -74,7 +74,6 @@
   ],
   "IncludedFiles": [
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"SourceCodePro-Medium.ttf","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"simsunb.ttf","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.2.560",

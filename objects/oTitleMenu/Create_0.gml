@@ -38,7 +38,7 @@ function fnStart(_oid) {
 		//ds_map_destroy(_map);
 	}
 	function fnNew(index) {
-		global.saveIndex = index;
+		global.save.index = index;
 		room_goto(rGame);
 	}
 	oid.addTab(new oid.Tab("New", fnNew, index));

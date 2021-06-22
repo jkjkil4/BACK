@@ -1,5 +1,7 @@
 event_inherited();
 
+function isCancel() { return keyboard_check_pressed(global.keyMenu) || keyboard_check_pressed(global.keyCancel); }
+
 //得到当前画面
 surf = surface_create(scrViewW(0), scrViewH(0));
 surface_copy(surf, 0, 0, application_surface);
@@ -26,7 +28,7 @@ function fnRetry(_self) {
 }
 function fnSaveAndExit(_self) {
 	instance_activate_layer(_self.layerid);
-	save(global.saveIndex);
+	save(global.save.index);
 	room_goto(rTitle);
 }
 //添加tab

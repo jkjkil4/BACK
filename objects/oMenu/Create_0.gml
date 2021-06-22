@@ -7,6 +7,11 @@ scale = 1;
 lockY = y;
 closeable = true;
 
+function isUp() { return keyboard_check_pressed(vk_up); }
+function isDown() { return keyboard_check_pressed(vk_down); }
+function isEnter() { return keyboard_check_pressed(global.keyEnter); }
+function isCancel() { return keyboard_check_pressed(global.keyCancel); }
+
 font = -1;
 function useFont() {
 	if(font != -1)
