@@ -27,8 +27,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Widgets",
-    "path": "folders/Game/Widgets.yy",
+    "name": "Menu",
+    "path": "folders/Game/Widgets/Menu.yy",
   },
   "resourceVersion": "1.0",
   "name": "oPauseMenu",

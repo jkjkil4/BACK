@@ -1,1 +1,0 @@
-scrCreateTitleMenu(100, 100);
