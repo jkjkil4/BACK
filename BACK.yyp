@@ -5,6 +5,7 @@
     {"id":{"name":"oVBorderPortal","path":"objects/oVBorderPortal/oVBorderPortal.yy",},"order":3,},
     {"id":{"name":"oInit","path":"objects/oInit/oInit.yy",},"order":7,},
     {"id":{"name":"ScrFile","path":"scripts/ScrFile/ScrFile.yy",},"order":2,},
+    {"id":{"name":"shaderTrCircleOut","path":"shaders/shaderTrCircleOut/shaderTrCircleOut.yy",},"order":0,},
     {"id":{"name":"tileBlocks","path":"tilesets/tileBlocks/tileBlocks.yy",},"order":1,},
     {"id":{"name":"oDebugMenu","path":"objects/oDebugMenu/oDebugMenu.yy",},"order":1,},
     {"id":{"name":"oEffect_Title","path":"objects/oEffect_Title/oEffect_Title.yy",},"order":1,},
@@ -74,6 +75,7 @@
     {"folderPath":"folders/Textures/Blocks.yy","order":2,"resourceVersion":"1.0","name":"Blocks","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Textures/Lights.yy","order":3,"resourceVersion":"1.0","name":"Lights","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Game/Effects.yy","order":10,"resourceVersion":"1.0","name":"Effects","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Shaders.yy","order":4,"resourceVersion":"1.0","name":"Shaders","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

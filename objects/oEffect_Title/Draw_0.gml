@@ -1,7 +1,7 @@
 beforeDraw();
 
 var len = array_length(elements);
-var color = make_color_rgb(246, 246, 248);
+var color = make_color_rgb(250, 250, 255);
 for(var i = 0; i < len; i++) {
 	var element = elements[i];
 	draw_sprite_ext(
