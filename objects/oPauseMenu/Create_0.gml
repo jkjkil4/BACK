@@ -14,6 +14,11 @@ instance_deactivate_layer(layerid);
 function drawEvent() {
 	if(surface_exists(surf))
 		draw_surface(surf, 0, 0);
+	draw_set_alpha(0.4);
+	draw_set_color(c_black);
+	draw_rectangle(0, 0, scrViewW(0), scrViewH(0), false);
+	draw_set_color(c_white);
+	draw_set_alpha(1);
 	drawTabs(x, y);
 }
 lockY = scrViewH(0) / 2;
