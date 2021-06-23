@@ -3,7 +3,8 @@ if(process >= 1) {
 	x = borderPortalInfo.targetX;
 	y = borderPortalInfo.targetY;
 	delete borderPortalInfo;
-	surface_free(surf);
+	if(surface_exists(surf))
+		surface_free(surf);
 	findNearestSavePoint();
 	instance_change(oPlayer_Active, false);
 	exit;

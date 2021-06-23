@@ -130,8 +130,8 @@
     "TileSerialiseData": [],
   },
   "parent": {
-    "name": "Tiles",
-    "path": "folders/Tiles.yy",
+    "name": "Blocks",
+    "path": "folders/Textures/Blocks.yy",
   },
   "resourceVersion": "1.0",
   "name": "tileBlocks",
