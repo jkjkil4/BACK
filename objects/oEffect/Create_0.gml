@@ -1,5 +1,6 @@
 enum RollDirection { LeftToRight = 0x1, UpToDown = 0x2, All = 0x3/*0x1|0x2*/ };
 
+surf = -1;
 function init(_rollDir, _margin) {
 	rollDir = _rollDir;
 	margin = _margin;
@@ -12,6 +13,8 @@ function init(_rollDir, _margin) {
 	surf = surface_create(surfWidth, surfHeight);
 }
 
+function lx(_x) { return _x - origWidth * floor(_x / origWidth); }
+function ly(_y) { return _y - origHeight * floor(_y / origHeight); }
 function tx(_x) { return rollDir & RollDirection.LeftToRight ? _x + margin : _x; }
 function ty(_y) { return rollDir & RollDirection.UpToDown ? _y + margin : _y; }
 
