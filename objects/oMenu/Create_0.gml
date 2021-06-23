@@ -85,6 +85,7 @@ function drawTab(_tab, _x, _y, _focused, _selected) {	//绘制单个tab
 	var color = (_focused ? (_selected ? c_yellow : c_white) 
 						   : (_selected ? make_color_rgb(200, 200, 0) : make_color_rgb(200, 200, 200)));
 	var tabScale = (_selected ? scale * 1.1 : scale);
+	draw_text_transformed_color(_x, _y + 1, _tab.text, tabScale, tabScale, 0, c_black, c_black, c_black, c_black, 1);
 	draw_text_transformed_color(_x, _y, _tab.text, tabScale, tabScale, 0, color, color, color, color, 1);
 }
 function drawTabs(_xx, _yy) {	//绘制所有tab
