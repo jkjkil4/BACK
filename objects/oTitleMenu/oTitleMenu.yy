@@ -26,8 +26,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Menu",
-    "path": "folders/Game/Widgets/Menu.yy",
+    "name": "Menus",
+    "path": "folders/Game/Widgets/Menus.yy",
   },
   "resourceVersion": "1.0",
   "name": "oTitleMenu",

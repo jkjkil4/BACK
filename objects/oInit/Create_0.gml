@@ -17,7 +17,7 @@ global.keyJump = ord("Z");
 
 //字体相关
 global.defaultFont = draw_get_font();
-global.titleFont = font_add("SourceCodePro-Medium.ttf", 18, true, false, 32, 128);
+global.titleFont = font_add("msyh.ttf", 20, true, false, 32, 128);
 
 //调试相关
 #macro DEBUG true

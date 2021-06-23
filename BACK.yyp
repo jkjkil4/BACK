@@ -70,7 +70,7 @@
     {"folderPath":"folders/Scripts.yy","order":2,"resourceVersion":"1.0","name":"Scripts","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Textures.yy","order":3,"resourceVersion":"1.0","name":"Textures","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Game/Widgets.yy","order":9,"resourceVersion":"1.0","name":"Widgets","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Game/Widgets/Menu.yy","order":3,"resourceVersion":"1.0","name":"Menu","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Game/Widgets/Menus.yy","order":3,"resourceVersion":"1.0","name":"Menus","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Textures/Blocks.yy","order":2,"resourceVersion":"1.0","name":"Blocks","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Textures/Lights.yy","order":3,"resourceVersion":"1.0","name":"Lights","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Game/Effects.yy","order":10,"resourceVersion":"1.0","name":"Effects","tags":[],"resourceType":"GMFolder",},
@@ -83,6 +83,7 @@
   ],
   "IncludedFiles": [
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"SourceCodePro-Medium.ttf","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"msyh.ttf","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.2.560",

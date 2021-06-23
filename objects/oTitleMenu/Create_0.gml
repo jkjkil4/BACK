@@ -44,4 +44,4 @@ function fnStart(_oid) {
 	oid.addTab(new oid.Tab("New", fnNew, index));
 }
 //添加tab
-addTab(new Tab("St开a始rt", fnStart, id));
+addTab(new Tab("Start", fnStart, id));
