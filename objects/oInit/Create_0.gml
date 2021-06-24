@@ -39,6 +39,9 @@ global.fonts = {
 	title : font_add("msyh.ttf", 24, true, false, 32, 128)
 };
 
+//颜色相关
+global.colorTxtBg = make_color_rgb(62, 130, 194);
+
 //调试相关
 #macro DEBUG debug_mode
 global.dbgTextVisible = false;
@@ -46,4 +49,5 @@ global.specVisible = false;
 global.gridVisible = false;
 global.debugMenu = noone;
 
+window_set_caption("BACK");
 room_goto(rTitle);

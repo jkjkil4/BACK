@@ -1,5 +1,54 @@
 event_inherited();
 
+enum SaveTabSelect { Continue, Rename, Delete };
+select = -1;
+
+function menuLogic() {
+	if(ds_list_size(tabList) != 0) {
+		if(select == -1) {
+			checkUD();
+		} else {
+			if(keyboard_check_pressed(global.keyLeft))
+				select--;
+			if(keyboard_check_pressed(global.keyRight))
+				select++;
+			if(select < 0)
+				select = SaveTabSelect.Delete;
+			else if(select > SaveTabSelect.Delete)
+				select = SaveTabSelect.Continue;
+		}
+		
+		if(isEnter()) {
+			if(select == -1) {
+				select = SaveTabSelect.Continue;
+			} else {
+				switch(select) {
+				case SaveTabSelect.Continue:
+				case SaveTabSelect.Rename:
+					show_message("还没做");
+					break;
+				case SaveTabSelect.Delete:
+					var oid = instance_create_layer(0, 0, "System", oDialog);
+					oid.text = "Do you want to delete it?";
+					oid.onAccept = fileClear
+					oid.acceptArgs = "saves/" + string(curIndex);
+					break;
+				}
+			}
+		}
+	}
+	
+	if(closeable && isCancel()) {
+		if(select == -1) {
+			close();
+		} else select = -1;
+	}
+}
+function drawEvent() {
+	if(global.sys.focusedWidget() == id)
+		drawTabs(x, y);
+}
+
 function Tab_SaveMenu(_vaild, _index) constructor {
 	vaild = _vaild
 	index = _index
@@ -23,7 +72,11 @@ function tabWidth(_tab, _selected) { return sprite_get_width(sSaveTab); }
 function tabHeight(_tab, _selected) { return sprite_get_height(sSaveTab); }
 
 function drawTab(_tab, _x, _y, _focused, _selected) {
+	if(select != -1 && !_selected)
+		draw_set_alpha(0.5);
 	draw_sprite(sSaveTab, _selected, _x, _y);
+	if(select != -1 && !_selected)
+		draw_set_alpha(1);
 }
 
 /*

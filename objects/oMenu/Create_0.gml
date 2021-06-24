@@ -123,8 +123,7 @@ function afterDrawTabs() {
 function drawTab(_tab, _x, _y, _focused, _selected) {	//绘制单个tab
 	var color = (_focused ? (_selected ? c_yellow : c_white) 
 						   : (_selected ? make_color_rgb(200, 200, 0) : make_color_rgb(200, 200, 200)));
-	var bgColor = make_color_rgb(62, 130, 194);
-	draw_set_color(bgColor);
+	draw_set_color(global.colorTxtBg);
 	draw_text_transformed(_x, _y + 2, _tab.text, scale, scale, 0);
 	draw_set_color(color);
 	draw_text_transformed(_x, _y, _tab.text, scale, scale, 0);

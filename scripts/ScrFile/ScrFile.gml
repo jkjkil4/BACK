@@ -1,5 +1,12 @@
-function fileIsEmpty() {
-	
+function fileIsEmpty(_fileName) {
+	var file = file_text_open_read(_fileName);
+	var isEmpty = file_text_eof(file);
+	file_text_close(file);
+	return isEmpty;
+}
+function fileClear(_fileName) {
+	var file = file_text_open_write(_fileName);
+	file_text_close(file);
 }
 
 function DotFileWriter(_file) constructor {

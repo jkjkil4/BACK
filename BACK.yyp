@@ -33,6 +33,7 @@
     {"id":{"name":"sStart","path":"sprites/sStart/sStart.yy",},"order":7,},
     {"id":{"name":"sHBorderProtal","path":"sprites/sHBorderProtal/sHBorderProtal.yy",},"order":1,},
     {"id":{"name":"oMenu","path":"objects/oMenu/oMenu.yy",},"order":1,},
+    {"id":{"name":"oDialog","path":"objects/oDialog/oDialog.yy",},"order":4,},
     {"id":{"name":"oPauseMenu","path":"objects/oPauseMenu/oPauseMenu.yy",},"order":0,},
     {"id":{"name":"sDot","path":"sprites/sDot/sDot.yy",},"order":4,},
     {"id":{"name":"oPlayer_Active","path":"objects/oPlayer_Active/oPlayer_Active.yy",},"order":0,},
