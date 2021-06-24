@@ -35,12 +35,16 @@ global.keyJump = ord("Z");
 
 //字体相关
 global.fonts = {
-	def : draw_get_font(),
-	title : font_add("msyh.ttf", 24, true, false, 32, 128)
+	def : font_add("simhei.ttf", 16, true, false, 32, 128),
+	title : font_add("simhei.ttf", 24, true, false, 32, 128),
 };
 
 //颜色相关
-global.colorTxtBg = make_color_rgb(62, 130, 194);
+global.colors = {
+	txtBg : make_color_rgb(62, 130, 194),
+	lightGray : make_color_rgb(220, 220, 220),
+	drakGray : make_color_rgb(80, 80, 80)
+};
 
 //调试相关
 #macro DEBUG debug_mode

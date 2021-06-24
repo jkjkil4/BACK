@@ -1,3 +1,3 @@
 event_inherited();
 
-aph = clamp(aph + (global.sys.focusedWidget() == id ? 0.15 : -0.15), 0, 1);
+aph = clamp(aph + (instance_exists(oSaveMenu) ? -0.15 : 0.15), 0, 1);
