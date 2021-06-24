@@ -1,7 +1,7 @@
 if(DEBUG) {
 	if(global.gridVisible) {
 		//绘制网格
-		var viewX = scrViewX(0), viewY = scrViewY(0), viewW = scrViewW(0), viewH = scrViewH(0);
+		var viewX = getViewX(0), viewY = getViewY(0), viewW = getViewW(0), viewH = getViewH(0);
 		var gridStartX = floor(max(0, viewX) / 128) * 128;
 		var gridStartY = floor(max(0, viewY) / 128) * 128;
 		var gridEndX = min(room_width, viewX + viewW);

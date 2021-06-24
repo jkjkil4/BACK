@@ -12,6 +12,45 @@ function isDown() { return keyboard_check_pressed(vk_down); }
 function isEnter() { return keyboard_check_pressed(global.keyEnter); }
 function isCancel() { return keyboard_check_pressed(global.keyCancel); }
 
+function checkUD() {
+	var size = ds_list_size(tabList);
+	var tmpCurIndex = curIndex;
+		
+	//根据按键改变tmpCurIndex
+	if(isUp()) tmpCurIndex--;
+	if(isDown()) tmpCurIndex++;
+	
+	//限制tmpCurIndex
+	if(tmpCurIndex < 0)
+		tmpCurIndex = size - 1;
+	else if(tmpCurIndex >= size)
+		tmpCurIndex = 0;
+	
+	//更新curIndex
+	if(tmpCurIndex != curIndex) {
+		curIndex = tmpCurIndex;
+		updateYOffsetTo();
+	}
+}
+function menuLogic() {
+	if(ds_list_size(tabList) != 0) {
+		checkUD();
+
+		//按下确认键时触发
+		if(isEnter()) {
+			var tab = tabList[| curIndex];
+			if(tab.args == undefined) {
+				tab.fn()
+			} else tab.fn(tab.args);
+		}
+	}
+	
+	//按下取消键时关闭
+	if(closeable && isCancel())
+		close();
+}
+
+
 font = -1;
 function useFont() {
 	if(font != -1)
@@ -97,7 +136,7 @@ function drawTabs(_xx, _yy) {	//绘制所有tab
 		return;
 	var isFocused = (global.sys.focusedWidget() == id);	//得到是否为焦点
 	
-	var viewH = scrViewH(0);	//视野高度
+	var viewH = getViewH(0);	//视野高度
 	var start = 0;	//起始index
 	var yy = _yy + yOffset;	//起始y
 	beforeDrawTabs();	//绘制前

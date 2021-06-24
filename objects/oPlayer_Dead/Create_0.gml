@@ -1,10 +1,10 @@
 global.save.deathCount++;
 
-var viewW = scrViewW(0), viewH = scrViewH(0);
+var viewW = getViewW(0), viewH = getViewH(0);
 
 process = 1;
-shaderX = x - scrViewX(0);
-shaderY = y - sprite_get_height(sPlayer) / 2 - scrViewY(0);
+shaderX = x - getViewX(0);
+shaderY = y - sprite_get_height(sPlayer) / 2 - getViewY(0);
 maxDistance = max(
 	point_distance(0, 0, shaderX, shaderY),
 	point_distance(0, viewH, shaderX, shaderY),

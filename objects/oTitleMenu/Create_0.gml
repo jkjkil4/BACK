@@ -2,7 +2,7 @@ event_inherited();
 
 //设置相关属性
 font = global.fonts.title;
-lockY = scrViewH(0) / 2;
+lockY = getViewH(0) / 2;
 halign = fa_center;
 valign = fa_top;
 closeable = false;
@@ -29,16 +29,18 @@ function drawEvent() {
 }
 
 function fnStart(_oid) {
+	instance_create_layer(_oid.x, _oid.y, "System", oSaveMenu);
+	/*
 	//新建实例
 	_oid.useFont();
 	var oid = instance_create_layer(
-		scrGetMenuChildX(_oid), scrGetMenuChildY(_oid, _oid.curIndex),
+		getMenuChildX(_oid), getMenuChildY(_oid, _oid.curIndex),
 		"System", oMenu
 		);
 	_oid.resetFont();
 	//设置相关属性
 	oid.font = global.fonts.title;
-	oid.lockY = scrViewH(0) * 0.6;
+	oid.lockY = getViewH(0) * 0.6;
 	oid.halign = fa_left;
 	oid.valign = fa_top;
 	oid.yOffset = 40;
@@ -63,7 +65,7 @@ function fnStart(_oid) {
 		global.save.index = index;
 		room_goto(rGame);
 	}
-	oid.addTab(new oid.Tab("New", fnNew, index));
+	oid.addTab(new oid.Tab("New", fnNew, index));*/
 }
 //添加tab
 addTab(new Tab("Start", fnStart, id));

@@ -12,7 +12,7 @@ for(var i = 0; i < 3; i++) {
 
 if(surface_exists(surf)) {
 	shader_set(shaderTrCircleOut);
-	scrShaderCircleOutSetUniform(maxDistance, 1 - process, 0.15, shaderX, shaderY);
-	draw_surface(surf, scrViewX(0), scrViewY(0));
+	setShaderCircleOutUniform(maxDistance, 1 - process, 0.15, shaderX, shaderY);
+	draw_surface(surf, getViewX(0), getViewY(0));
 	shader_reset();
 }

@@ -1,9 +1,9 @@
 event_inherited();
 
 //设置相关属性
-lockY = scrViewH(0) / 2;
+lockY = getViewH(0) / 2;
 halign = fa_left;
-yOffset = scrViewH(0);
+yOffset = getViewH(0);
 function fnMove() {	
 	//用于将玩家移动至鼠标位置
 	if(instance_exists(oPlayer_Active)) {
@@ -18,7 +18,7 @@ function fnRetry() {	//用于重试
 function fnSave(_oid) {		//存档相关
 	//新建实例
 	var oid = instance_create_layer(
-		scrGetMenuChildX(_oid), scrGetMenuChildY(_oid, _oid.curIndex),
+		getMenuChildX(_oid), getMenuChildY(_oid, _oid.curIndex),
 		"System", oMenu
 		);
 	//设置相关属性
@@ -43,7 +43,7 @@ function fnSave(_oid) {		//存档相关
 function fnRoomSpd(_oid) {	//调整room_speed的菜单
 	//新建实例
 	var oid = instance_create_layer(
-		scrGetMenuChildX(_oid), scrGetMenuChildY(_oid, _oid.curIndex), 
+		getMenuChildX(_oid), getMenuChildY(_oid, _oid.curIndex), 
 		"System", oMenu
 		);
 	//设置相关属性
@@ -59,7 +59,7 @@ function fnRoomSpd(_oid) {	//调整room_speed的菜单
 function fnVisible(_oid) {	//控制相关内容可视性
 	//新建实例
 	var oid = instance_create_layer(
-		scrGetMenuChildX(_oid), scrGetMenuChildY(_oid, _oid.curIndex), 
+		getMenuChildX(_oid), getMenuChildY(_oid, _oid.curIndex), 
 		"System", oMenu
 		);
 	//设置相关属性

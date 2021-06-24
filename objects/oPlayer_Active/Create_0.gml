@@ -28,8 +28,8 @@ function BorderPortalInfo(_id, _borderPortalId) constructor {
 	xprevOffset = _id.xprevious - _borderPortalId.x;
 	yprevOffset = _id.yprevious - _borderPortalId.y;
 	//surface绘制位置相对于传送门的坐标
-	surfXOffset = scrViewX(0) - _borderPortalId.x;
-	surfYOffset = scrViewY(0) - _borderPortalId.y;
+	surfXOffset = getViewX(0) - _borderPortalId.x;
+	surfYOffset = getViewY(0) - _borderPortalId.y;
 }
 
 //找离当前位置最近的存档点，若没有则设定为当前位置

@@ -5,11 +5,11 @@ for(var i = 0; i < count; i++) {
 	if(portal.portalId == borderPortalInfo.toPortalId) {
 		borderPortalInfo.targetX = portal.x + borderPortalInfo.xOffset;
 		borderPortalInfo.targetY = portal.y + borderPortalInfo.yOffset;
-		var viewW = scrViewW(0), viewH = scrViewH(0);
+		var viewW = getViewW(0), viewH = getViewH(0);
 		borderPortalInfo.fromX = portal.x + borderPortalInfo.surfXOffset + viewW / 2;
 		borderPortalInfo.fromY = portal.y + borderPortalInfo.surfYOffset + viewH / 2;
-		borderPortalInfo.toX = scrViewBoundX(borderPortalInfo.targetX) + viewW / 2;
-		borderPortalInfo.toY = scrViewBoundY(borderPortalInfo.targetY) + viewH / 2;
+		borderPortalInfo.toX = getViewBoundX(borderPortalInfo.targetX) + viewW / 2;
+		borderPortalInfo.toY = getViewBoundY(borderPortalInfo.targetY) + viewH / 2;
 		borderPortalInfo.targetPortal = portal;
 		break;
 	}

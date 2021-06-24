@@ -3,7 +3,7 @@ event_inherited();
 function isCancel() { return keyboard_check_pressed(global.keyMenu) || keyboard_check_pressed(global.keyCancel); }
 
 //得到当前画面
-surf = surface_create(scrViewW(0), scrViewH(0));
+surf = surface_create(getViewW(0), getViewH(0));
 surface_copy(surf, 0, 0, application_surface);
 
 //停用Entity层的所有实例
@@ -16,12 +16,12 @@ function drawEvent() {
 		draw_surface(surf, 0, 0);
 	draw_set_alpha(0.4);
 	draw_set_color(c_black);
-	draw_rectangle(0, 0, scrViewW(0), scrViewH(0), false);
+	draw_rectangle(0, 0, getViewW(0), getViewH(0), false);
 	draw_set_color(c_white);
 	draw_set_alpha(1);
 	drawTabs(x, y);
 }
-lockY = scrViewH(0) / 2;
+lockY = getViewH(0) / 2;
 halign = fa_center;
 
 

@@ -4,8 +4,8 @@ surf = -1;
 function init(_rollDir, _margin) {
 	rollDir = _rollDir;
 	margin = _margin;
-	origWidth = scrViewW(0);
-	origHeight = scrViewH(0);
+	origWidth = getViewW(0);
+	origHeight = getViewH(0);
 	surfWidth = (rollDir & RollDirection.LeftToRight ? origWidth + 2 * margin : origWidth);
 	surfHeight = (rollDir & RollDirection.UpToDown ? origHeight + 2 * margin : origHeight);
 	if(surface_exists(surf))
@@ -30,8 +30,8 @@ function afterDraw(isGui) {
 	var isUd = rollDir & RollDirection.UpToDown;
 	var origX = (isLr ? margin : 0);
 	var origY = (isUd ? margin : 0);
-	var vx = (isGui ? 0 : scrViewX(0));
-	var vy = (isGui ? 0 : scrViewY(0));
+	var vx = (isGui ? 0 : getViewX(0));
+	var vy = (isGui ? 0 : getViewY(0));
 	draw_surface_part(surf, origX, origY, origWidth, origHeight, vx, vy);
 	if(isLr) {
 		draw_surface_part(surf, 0, origY, margin, origHeight, vx + origWidth - margin, vy);

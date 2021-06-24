@@ -1,3 +1,7 @@
+function fileIsEmpty() {
+	
+}
+
 function DotFileWriter(_file) constructor {
 	file = _file;
 	static fileOpen = function() { handle = file_text_open_write(file); }
@@ -70,6 +74,7 @@ function load(_index) {
 		//创建map
 		var mapBaseInfo = ds_map_create(), mapImpInfo = ds_map_create();
 		
+		//读取
 		var dfr = new DotFileReader(fileName);
 		dfr.fileOpen();
 		transToMap(dfr.readLine(), mapBaseInfo);
