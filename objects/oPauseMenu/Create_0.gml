@@ -33,6 +33,7 @@ function fnRetry(_self) {
 }
 function fnSaveAndExit(_self) {
 	instance_activate_layer(_self.layerid);
+	global.save.exitCount++;
 	save(global.save.index);
 	room_goto(rTitle);
 }

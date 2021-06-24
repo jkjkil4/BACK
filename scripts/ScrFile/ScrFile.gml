@@ -37,7 +37,7 @@ function DotFileReader(_file) constructor {
 		return result;
 	}
 	static nextLine = function() { return file_text_readln(handle); }
-	static atEnd = function() { return file_text_eof(handle); }
+	//static atEnd = function() { return file_text_eof(handle); }
 	static fileClose = function() { file_text_close(handle); }
 }
 
@@ -54,6 +54,8 @@ function save(_index) {
 			directory_create("saves");
 		var dfw = new DotFileWriter("saves/" + string(global.save.index));
 		dfw.fileOpen();
+		dfw.write("DeathC", global.save.deathCount);
+		dfw.write("ExitC", global.save.exitCount);
 		dfw.nextLine();
 		dfw.write("rn", room_get_name(room));
 		dfw.write("spx", oPlayer_Active.savePointX);
@@ -65,28 +67,40 @@ function save(_index) {
 function load(_index) {
 	var fileName = "saves/" + string(_index);
 	if(file_exists(fileName)) {
-		var map = ds_map_create();
+		//创建map
+		var mapBaseInfo = ds_map_create(), mapImpInfo = ds_map_create();
+		
 		var dfr = new DotFileReader(fileName);
 		dfr.fileOpen();
-		dfr.nextLine();
-		transToMap(dfr.readLine(), map);
+		transToMap(dfr.readLine(), mapBaseInfo);
+		transToMap(dfr.readLine(), mapImpInfo);
 		dfr.fileClose();
 		delete dfr;
-		if(!ds_map_exists(map, "spx") || !ds_map_exists(map, "spy") || !ds_map_exists(map, "rn")) {
+		
+		//mapBaseInfo
+		global.save.deathCount = (ds_map_exists(mapBaseInfo, "DeathC") ? real(mapBaseInfo[? "DeathC"]) : 0);
+		global.save.exitCount = (ds_map_exists(mapBaseInfo, "ExitC") ? real(mapBaseInfo[? "ExitC"]) : 0);
+		
+		//mapImpInfo
+		if(!ds_map_exists(mapImpInfo, "spx") || !ds_map_exists(mapImpInfo, "spy") || !ds_map_exists(mapImpInfo, "rn")) {
 			show_message("Failed to load (variable does not exist)");	
 			return;
 		}
-		var rn = map[? "rn"];
+		var rn = mapImpInfo[? "rn"];
 		if(!ds_map_exists(global.roomMap, rn)) {
 			show_message("Failed to load (room does not exist)");
 			return;
 		}
-		var spx = real(map[? "spx"]), spy = real(map[? "spy"]);
+		var spx = real(mapImpInfo[? "spx"]), spy = real(mapImpInfo[? "spy"]);
 		var player = instance_create_layer(spx, spy, "Entity", oPlayer_Tmp);
 		player.savePointX = spx;
 		player.savePointY = spy;
 		room_goto(global.roomMap[? rn]);
-		ds_map_destroy(map);
+		
+		//销毁map
+		ds_map_destroy(mapBaseInfo);
+		ds_map_destroy(mapImpInfo);
+		
 		global.save.index = _index;
 	}
 }

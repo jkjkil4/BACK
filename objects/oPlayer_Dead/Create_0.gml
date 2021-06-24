@@ -1,3 +1,5 @@
+global.save.deathCount++;
+
 var viewW = scrViewW(0), viewH = scrViewH(0);
 
 process = 1;
