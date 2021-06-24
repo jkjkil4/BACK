@@ -1,7 +1,7 @@
 global.save = {
 	index : 0,
 	deathCount : 0
-}
+};
 global.roomMap = ds_map_create();
 global.roomMap[? "rGame"] = rGame;
 global.roomMap[? "rGame2"] = rGame2;
@@ -16,8 +16,10 @@ global.keyRight = vk_right;
 global.keyJump = ord("Z");
 
 //字体相关
-global.defaultFont = draw_get_font();
-global.titleFont = font_add("msyh.ttf", 20, true, false, 32, 128);
+global.fonts = {
+	def : draw_get_font(),
+	title : font_add("msyh.ttf", 24, true, false, 32, 128)
+};
 
 //调试相关
 #macro DEBUG true

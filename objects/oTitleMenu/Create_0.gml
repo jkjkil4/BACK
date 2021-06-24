@@ -1,11 +1,33 @@
 event_inherited();
 
 //设置相关属性
-font = global.titleFont;
+font = global.fonts.title;
 lockY = scrViewH(0) / 2;
-halign = fa_left;
+halign = fa_center;
 valign = fa_top;
 closeable = false;
+
+aph = 1;
+
+function beforeDrawTabs() {
+	//设置文字对齐方式
+	draw_set_halign(halign);
+	draw_set_valign(valign);
+	useFont();	//设置字体
+	draw_set_alpha(aph);	//设置透明度
+}
+function afterDrawTabs() {
+	draw_set_alpha(1);	//还原透明度
+	resetFont();	//还原字体
+	//还原文字对齐方式
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_top);
+}
+function drawEvent() {
+	if(aph > 0)
+		drawTabs(x, y - 50 * (1 - aph));
+}
+
 function fnStart(_oid) {
 	//新建实例
 	_oid.useFont();
@@ -15,7 +37,7 @@ function fnStart(_oid) {
 		);
 	_oid.resetFont();
 	//设置相关属性
-	oid.font = global.titleFont;
+	oid.font = global.fonts.title;
 	oid.lockY = scrViewH(0) * 0.6;
 	oid.halign = fa_left;
 	oid.valign = fa_top;
@@ -45,3 +67,4 @@ function fnStart(_oid) {
 }
 //添加tab
 addTab(new Tab("Start", fnStart, id));
+addTab(new Tab("Exit", game_end, undefined));

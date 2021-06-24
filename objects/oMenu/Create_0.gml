@@ -17,7 +17,7 @@ function useFont() {
 	if(font != -1)
 		draw_set_font(font);
 }
-function resetFont() { draw_set_font(global.defaultFont); }
+function resetFont() { draw_set_font(global.fonts.def); }
 
 yOffsetTo = 0;
 yOffset = 0;
@@ -85,8 +85,11 @@ function drawTab(_tab, _x, _y, _focused, _selected) {	//绘制单个tab
 	var color = (_focused ? (_selected ? c_yellow : c_white) 
 						   : (_selected ? make_color_rgb(200, 200, 0) : make_color_rgb(200, 200, 200)));
 	var bgColor = make_color_rgb(62, 130, 194);
-	draw_text_transformed_color(_x, _y + 2, _tab.text, scale, scale, 0, bgColor, bgColor, bgColor, bgColor, 1);
-	draw_text_transformed_color(_x, _y, _tab.text, scale, scale, 0, color, color, color, color, 1);
+	draw_set_color(bgColor);
+	draw_text_transformed(_x, _y + 2, _tab.text, scale, scale, 0);
+	draw_set_color(color);
+	draw_text_transformed(_x, _y, _tab.text, scale, scale, 0);
+	draw_set_color(c_white);
 }
 function drawTabs(_xx, _yy) {	//绘制所有tab
 	var size = ds_list_size(tabList);

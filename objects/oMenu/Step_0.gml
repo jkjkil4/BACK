@@ -25,7 +25,9 @@ if(global.sys.focusedWidget() == id) {
 		//按下确认键时触发
 		if(isEnter()) {
 			var tab = tabList[| curIndex];
-			tab.fn(tab.args);
+			if(tab.args == undefined) {
+				tab.fn()
+			} else tab.fn(tab.args);
 		}
 	}
 	
