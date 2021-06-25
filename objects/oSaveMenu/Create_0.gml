@@ -3,7 +3,7 @@ event_inherited();
 enum SaveTabSelect { Continue, Rename, Delete };
 select = -1;
 
-#macro SAVETAB_TXTSPACING 8
+#macro SAVETAB_TXTSPACING 10
 
 function menuLogic() {
 	if(ds_list_size(tabList) != 0) {
@@ -22,10 +22,17 @@ function menuLogic() {
 		
 		if(isEnter()) {
 			if(select == -1) {
-				select = SaveTabSelect.Continue;
+				if(tabList[| curIndex].vaild) {
+					select = SaveTabSelect.Continue;
+				} else {
+					global.save.index = curIndex;
+					room_goto(rGame);
+				}
 			} else {
 				switch(select) {
 				case SaveTabSelect.Continue:
+					load(curIndex);
+					break;
 				case SaveTabSelect.Rename:
 					show_message("还没做");
 					break;
@@ -99,19 +106,19 @@ function drawTab(_index, _tab, _x, _y) {
 		if(select != -1 && isSelected) {
 			draw_set_valign(fa_bottom);
 			draw_set_halign(fa_right);
-			draw_set_color(global.colors.drakGray);
+			draw_set_color(global.colors.darkGray);
 			draw_text(_x + xOffset, bottom + 2, "Delete");
 			draw_set_color(select == 2 ? c_yellow : global.colors.lightGray);
 			draw_text(_x + xOffset, bottom, "Delete");
 		
 			draw_set_halign(fa_center);
-			draw_set_color(global.colors.drakGray);
+			draw_set_color(global.colors.darkGray);
 			draw_text(_x, bottom + 2, "Rename");
 			draw_set_color(select == 1 ? c_yellow : global.colors.lightGray);
 			draw_text(_x, bottom, "Rename");
 		
 			draw_set_halign(fa_left);
-			draw_set_color(global.colors.drakGray);
+			draw_set_color(global.colors.darkGray);
 			draw_text(_x - xOffset, bottom + 2, "Continue");
 			draw_set_color(select == 0 ? c_yellow : global.colors.lightGray);
 			draw_text(_x - xOffset, bottom, "Continue");
@@ -126,40 +133,27 @@ function drawTab(_index, _tab, _x, _y) {
 		
 		draw_set_font(global.fonts.def);
 		draw_set_color(c_white);
+	} else {
+		draw_set_font(global.fonts.lightLarge);
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		
+		var yy = _y + sprite_get_height(sSaveTab) / 2;
+		draw_set_color(global.colors.darkGray);
+		draw_text(_x, yy + 2, "Start");
+		draw_set_color(isSelected ? c_yellow : global.colors.lightGray);
+		draw_text(_x, yy, "Start");
+		
+		draw_set_font(global.fonts.def);
+		draw_set_color(c_white);
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_top);
 	}
 	
 	if(select != -1 && !isSelected)
 		draw_set_alpha(1);
 }
 
-/*
-oid.font = global.fonts.title;
-	oid.lockY = getViewH(0) * 0.6;
-	oid.halign = fa_left;
-	oid.valign = fa_top;
-	oid.yOffset = 40;
-	//得到已有存档
-	var index = (DEBUG && file_exists("saves/0") ? 0 : 1);
-	if(directory_exists("saves")) {
-		var fileName = "saves/" + string(index);
-		//var _map = ds_map_create();
-		while(file_exists(fileName)) {
-			//dfr = new DotFileReader(_fileName);
-			//dfr.fileOpen();
-			//transToMap(dfr.readLine(), _map);
-			//dfr.fileClose();
-			//delete dfr;
-			oid.addTab(new oid.Tab(index, load, index));
-			index++;
-			fileName = "saves/" + string(index);
-		}
-		//ds_map_destroy(_map);
-	}
-	function fnNew(index) {
-		global.save.index = index;
-		room_goto(rGame);
-	}
-	oid.addTab(new oid.Tab("New", fnNew, index));*/
 	
 lockY = getViewH(0) / 2;
 yOffset = 40;
@@ -174,3 +168,4 @@ if(directory_exists("saves")) {
 		fileName = "saves/" + string(index);
 	}
 }
+addTab(new Tab_SaveMenu(false, 0));

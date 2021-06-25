@@ -36,14 +36,15 @@ global.keyJump = ord("Z");
 //字体相关
 global.fonts = {
 	def : font_add("simhei.ttf", 16, true, false, 32, 128),
-	title : font_add("simhei.ttf", 24, true, false, 32, 128),
+	lightLarge : font_add("simhei.ttf", 20, true, false, 32, 128),
+	title : font_add("simhei.ttf", 24, true, false, 32, 128)
 };
 
 //颜色相关
 global.colors = {
 	txtBg : make_color_rgb(62, 130, 194),
 	lightGray : make_color_rgb(220, 220, 220),
-	drakGray : make_color_rgb(80, 80, 80)
+	darkGray : make_color_rgb(80, 80, 80)
 };
 
 //调试相关

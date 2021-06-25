@@ -63,7 +63,7 @@ function save(_index) {
 	if(instance_exists(oPlayer_Active)) {
 		if(!directory_exists("saves"))
 			directory_create("saves");
-		var dfw = new DotFileWriter("saves/" + string(global.save.index));
+		var dfw = new DotFileWriter("saves/" + string(_index));
 		dfw.fileOpen();
 		dfw.write("DeathC", global.save.deathCount);
 		dfw.write("ExitC", global.save.exitCount);
