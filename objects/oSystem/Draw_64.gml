@@ -15,9 +15,8 @@ if(DEBUG) {
 		}
 
 		//绘制调试信息
-		draw_set_color(c_black);
-		draw_text(0, 2, debugMsg);
-		draw_set_color(global.colors.lightGray);
-		draw_text(0, 0, debugMsg);
+		draw_set_font(global.fonts.lightSmall);
+		drawTextEx(0, 0, debugMsg, global.colors.lightGray, global.colors.darkGray);
+		draw_set_font(global.fonts.def);
 	}
 }

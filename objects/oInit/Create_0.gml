@@ -36,6 +36,7 @@ global.keyJump = ord("Z");
 //字体相关
 global.fonts = {
 	def : font_add("simhei.ttf", 16, true, false, 32, 128),
+	lightSmall : font_add("simhei.ttf", 12, true, false, 32, 128),
 	lightLarge : font_add("simhei.ttf", 20, true, false, 32, 128),
 	title : font_add("simhei.ttf", 24, true, false, 32, 128)
 };
@@ -54,5 +55,5 @@ global.specVisible = false;
 global.gridVisible = false;
 global.debugMenu = noone;
 
-window_set_caption("BACK");
+//window_set_caption("BACK");
 room_goto(rTitle);

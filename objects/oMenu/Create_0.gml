@@ -12,8 +12,6 @@ function isDown() { return keyboard_check_pressed(vk_down); }
 function isEnter() { return keyboard_check_pressed(global.keyEnter); }
 function isCancel() { return keyboard_check_pressed(global.keyCancel); }
 
-function focused() { return global.sys.focusedWidget() == id; }
-
 function checkUD() {
 	var size = ds_list_size(tabList);
 	var tmpCurIndex = curIndex;
@@ -125,11 +123,7 @@ function afterDrawTabs() {
 function drawTab(_index, _tab, _x, _y) {	//绘制单个tab
 	var color = (isFocused ? (curIndex == _index ? c_yellow : global.colors.lightGray) 
 						   : (curIndex == _index ? make_color_rgb(200, 200, 0) : c_gray));
-	draw_set_color(global.colors.txtBg);
-	draw_text_transformed(_x, _y + 2, _tab.text, scale, scale, 0);
-	draw_set_color(color);
-	draw_text_transformed(_x, _y, _tab.text, scale, scale, 0);
-	draw_set_color(c_white);
+	drawTextEx(_x, _y, _tab.text, color, global.colors.darkGray);
 }
 function drawTabs(_xx, _yy) {	//绘制所有tab
 	var size = ds_list_size(tabList);

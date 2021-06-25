@@ -14,24 +14,15 @@ function drawEvent() {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_bottom);
 	draw_set_font(global.fonts.title);
-	draw_set_color(global.colors.txtBg);
-	draw_text(xx, yy - 18, text);
-	draw_set_color(global.colors.lightGray);
-	draw_text(xx, yy - 20, text);
+	drawTextEx(xx, yy - 20, text, global.colors.lightGray, global.colors.txtBg);
 	
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_top);
 	draw_set_font(global.fonts.def);
-	draw_set_color(global.colors.darkGray);
-	draw_text(xx - 20, yy + 22, textCancel);
-	draw_set_color(accepted ? global.colors.lightGray : c_yellow);
-	draw_text(xx - 20, yy + 20, textCancel);
+	drawTextEx(xx - 20, yy + 20, textCancel, accepted ? global.colors.lightGray : c_yellow, global.colors.darkGray);
 	
 	draw_set_halign(fa_left);
-	draw_set_color(global.colors.darkGray);
-	draw_text(xx + 20, yy + 22, textAccept);
-	draw_set_color(accepted ? c_yellow : global.colors.lightGray);
-	draw_text(xx + 20, yy + 20, textAccept);
+	drawTextEx(xx + 20, yy + 20, textAccept, accepted ? c_yellow : global.colors.lightGray, global.colors.darkGray);
 }
 function closeEvent() {
 	if(accepted) {

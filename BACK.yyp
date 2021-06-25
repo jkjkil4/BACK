@@ -30,6 +30,7 @@
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":5,},
     {"id":{"name":"rTitle","path":"rooms/rTitle/rTitle.yy",},"order":4,},
     {"id":{"name":"oPlayer_InPortal","path":"objects/oPlayer_InPortal/oPlayer_InPortal.yy",},"order":8,},
+    {"id":{"name":"ScrDraw","path":"scripts/ScrDraw/ScrDraw.yy",},"order":4,},
     {"id":{"name":"sStart","path":"sprites/sStart/sStart.yy",},"order":7,},
     {"id":{"name":"sHBorderProtal","path":"sprites/sHBorderProtal/sHBorderProtal.yy",},"order":1,},
     {"id":{"name":"oMenu","path":"objects/oMenu/oMenu.yy",},"order":1,},

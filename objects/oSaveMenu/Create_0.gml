@@ -104,45 +104,30 @@ function drawTab(_index, _tab, _x, _y) {
 		var xOffset = sprWidth / 2 - SAVETAB_TXTSPACING;
 
 		if(select != -1 && isSelected) {
+			function labelColor(_index) { return select == _index ? c_yellow : global.colors.lightGray; }
+			
 			draw_set_valign(fa_bottom);
 			draw_set_halign(fa_right);
-			draw_set_color(global.colors.darkGray);
-			draw_text(_x + xOffset, bottom + 2, "Delete");
-			draw_set_color(select == 2 ? c_yellow : global.colors.lightGray);
-			draw_text(_x + xOffset, bottom, "Delete");
+			drawTextEx(_x + xOffset, bottom, "Delete", labelColor(2), global.colors.darkGray);
 		
 			draw_set_halign(fa_center);
-			draw_set_color(global.colors.darkGray);
-			draw_text(_x, bottom + 2, "Rename");
-			draw_set_color(select == 1 ? c_yellow : global.colors.lightGray);
-			draw_text(_x, bottom, "Rename");
-		
+			drawTextEx(_x, bottom, "Rename", labelColor(1), global.colors.darkGray);
+
 			draw_set_halign(fa_left);
-			draw_set_color(global.colors.darkGray);
-			draw_text(_x - xOffset, bottom + 2, "Continue");
-			draw_set_color(select == 0 ? c_yellow : global.colors.lightGray);
-			draw_text(_x - xOffset, bottom, "Continue");
+			drawTextEx(_x - xOffset, bottom, "Continue", labelColor(0), global.colors.darkGray);
 		}
 		draw_set_valign(fa_top);
 		draw_set_halign(fa_left);
 		draw_set_font(global.fonts.title);
-		draw_set_color(global.colors.txtBg);
-		draw_text(_x - xOffset, _y + SAVETAB_TXTSPACING + 2, "114514");
-		draw_set_color(global.colors.lightGray);
-		draw_text(_x - xOffset, _y + SAVETAB_TXTSPACING, "114514");
-		
+		drawTextEx(_x - xOffset, _y + SAVETAB_TXTSPACING, "114514", global.colors.lightGray, global.colors.txtBg);
 		draw_set_font(global.fonts.def);
-		draw_set_color(c_white);
 	} else {
 		draw_set_font(global.fonts.lightLarge);
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		
 		var yy = _y + sprite_get_height(sSaveTab) / 2;
-		draw_set_color(global.colors.darkGray);
-		draw_text(_x, yy + 2, "Start");
-		draw_set_color(isSelected ? c_yellow : global.colors.lightGray);
-		draw_text(_x, yy, "Start");
+		drawTextEx(_x, yy, "Start", isSelected ? c_yellow : global.colors.lightGray, global.colors.darkGray);
 		
 		draw_set_font(global.fonts.def);
 		draw_set_color(c_white);
