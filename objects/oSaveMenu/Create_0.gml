@@ -32,8 +32,19 @@ function menuLogic() {
 				case SaveTabSelect.Delete:
 					var oid = instance_create_layer(0, 0, "System", oDialog);
 					oid.text = "Do you want to delete it?";
-					oid.onAccept = fileClear
-					oid.acceptArgs = "saves/" + string(curIndex);
+					oid.onAccept = function(_index) {
+						fileClear("saves/" + string(curIndex));
+						with(oSaveMenu) {
+							var count = ds_list_size(tabList);
+							for(var i = 0; i < count; i++) {
+								var tab = tabList[| i];
+								if(tab.index == _index)
+									tab.vaild = false;
+							}
+							select = -1;
+						}
+					}
+					oid.acceptArgs = curIndex;
 					break;
 				}
 			}
@@ -80,31 +91,33 @@ function drawTab(_index, _tab, _x, _y) {
 	
 	draw_sprite(sSaveTab, isSelected, _x, _y);
 	
-	if(select != -1 && isSelected && _tab.vaild) {
+	if(_tab.vaild) {
 		var sprWidth = sprite_get_width(sSaveTab), sprHeight = sprite_get_height(sSaveTab);
 		var bottom = _y + sprHeight - SAVETAB_TXTSPACING;
 		var xOffset = sprWidth / 2 - SAVETAB_TXTSPACING;
+
+		if(select != -1 && isSelected) {
+			draw_set_valign(fa_bottom);
+			draw_set_halign(fa_right);
+			draw_set_color(global.colors.drakGray);
+			draw_text(_x + xOffset, bottom + 2, "Delete");
+			draw_set_color(select == 2 ? c_yellow : global.colors.lightGray);
+			draw_text(_x + xOffset, bottom, "Delete");
 		
-		draw_set_valign(fa_bottom);
-		draw_set_halign(fa_right);
-		draw_set_color(global.colors.drakGray);
-		draw_text(_x + xOffset, bottom + 2, "Delete");
-		draw_set_color(select == 2 ? c_yellow : global.colors.lightGray);
-		draw_text(_x + xOffset, bottom, "Delete");
+			draw_set_halign(fa_center);
+			draw_set_color(global.colors.drakGray);
+			draw_text(_x, bottom + 2, "Rename");
+			draw_set_color(select == 1 ? c_yellow : global.colors.lightGray);
+			draw_text(_x, bottom, "Rename");
 		
-		draw_set_halign(fa_center);
-		draw_set_color(global.colors.drakGray);
-		draw_text(_x, bottom + 2, "Rename");
-		draw_set_color(select == 1 ? c_yellow : global.colors.lightGray);
-		draw_text(_x, bottom, "Rename");
-		
-		draw_set_halign(fa_left);
-		draw_set_color(global.colors.drakGray);
-		draw_text(_x - xOffset, bottom + 2, "Continue");
-		draw_set_color(select == 0 ? c_yellow : global.colors.lightGray);
-		draw_text(_x - xOffset, bottom, "Continue");
-		
+			draw_set_halign(fa_left);
+			draw_set_color(global.colors.drakGray);
+			draw_text(_x - xOffset, bottom + 2, "Continue");
+			draw_set_color(select == 0 ? c_yellow : global.colors.lightGray);
+			draw_text(_x - xOffset, bottom, "Continue");
+		}
 		draw_set_valign(fa_top);
+		draw_set_halign(fa_left);
 		draw_set_font(global.fonts.title);
 		draw_set_color(global.colors.txtBg);
 		draw_text(_x - xOffset, _y + SAVETAB_TXTSPACING + 2, "114514");
